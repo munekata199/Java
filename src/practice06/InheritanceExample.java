@@ -1,3 +1,4 @@
+package practice05;
 // 動物クラス（親クラス）
 class Animal {
     protected String name;
