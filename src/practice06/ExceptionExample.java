@@ -1,4 +1,4 @@
-package practice05
+package practice05;
 // 自作例外クラスを作成（Exceptionを継承）
 class InvalidAgeException extends Exception {
     public InvalidAgeException(String message) {
