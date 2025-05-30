@@ -22,66 +22,11 @@ class Student {
     public void setAge(int age) {
         this.age = age;
     }
-}
-
-// ===== 継承とオーバーライドの例 =====
-// 親クラス（スーパークラス）
-class Animal {
-    String name = "動物";
-
-    public void makeSound() {
-        System.out.println("なんらかの鳴き声");
-    }
-}
-
-// 子クラス（サブクラス）: Animalを継承している
-class Dog extends Animal {
-    // name変数も継承される（親にある変数やメソッドを使える）
-
-    // オーバーライド（親と同じメソッド名で、処理を上書きする）
-    @Override
-    public void makeSound() {
-        System.out.println("ワンワン！");
-    }
-}
-
-// ===== 例外処理（try-catch-finally、throw、throws） =====
-class ExceptionExample {
-
-    // throws付き：このメソッドはIOExceptionを投げる可能性がありますと宣言してる
-    public static void riskyMethod() throws java.io.IOException {
-        // throw：実際に例外を発生させる
-        throw new java.io.IOException("ファイルが見つかりません");
-    }
 
     public static void main(String[] args) {
-        // ========== カプセル化 ==========
         Student s1 = new Student("たろう", 16); // インスタンス化（newを使う）
         System.out.println("生徒の名前: " + s1.getName());
         s1.setAge(17); // setterを使ってageを変更
         System.out.println("学校名: " + Student.schoolName); // static変数はクラス名.変数名でアクセスできる
-
-        // ========== 継承とオーバーライド ==========
-        Animal a = new Animal();
-        a.makeSound(); // 動物の鳴き声
-
-        Dog d = new Dog();
-        d.makeSound(); // オーバーライドされたDogの鳴き声（ワンワン）
-        System.out.println("Dogの名前: " + d.name); // 親クラスの変数も使える（継承）
-
-        Animal ad = new Dog(); // ポリモーフィズムの例：Animal型でDogのインスタンス
-        ad.makeSound(); // DogのmakeSoundが呼ばれる（中身はDogだから）
-
-        // ========== 例外処理 ==========
-        try {
-            riskyMethod(); // throwsされたメソッドを呼ぶときはtry-catchが必要
-        } catch (java.io.IOException e) {
-            System.out.println("例外をキャッチしました: " + e.getMessage());
-        } finally {
-            System.out.println("finallyブロック：例外が出ても出なくても実行される");
-        }
     }
 }
-
-
-
