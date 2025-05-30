@@ -1,0 +1,37 @@
+// ===== 継承とオーバーライドの例 =====
+
+// 親クラス（スーパークラス）
+class Animal {
+    protected String name = "動物";
+
+    public void speak() {
+        System.out.println("なにかの鳴き声");
+    }
+}
+
+// 子クラス（Animalを継承）
+class Dog extends Animal {
+    // nameは継承されるので、Dogの中でも使える
+    public Dog() {
+        this.name = "犬";
+    }
+
+    // オーバーライド（親のspeakを上書き）
+    @Override
+    public void speak() {
+        System.out.println("ワンワン！");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog myDog = new Dog(); // Dogのインスタンスを作る
+        System.out.println("名前: " + myDog.name); // 継承されたnameにアクセス
+        myDog.speak(); // オーバーライドされたspeakが呼ばれる
+
+        // ポリモーフィズムの例（親型で子を扱う）
+        Animal a = new Dog(); // Animal型としてDogを扱う
+        System.out.println("名前（ポリモーフィズム）: " + a.name); // nameは親クラスの変数
+        a.speak(); // でもspeakはオーバーライドされてるからDogの方が呼ばれる
+    }
+}
