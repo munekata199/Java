@@ -1,0 +1,32 @@
+// ===== 例外処理の例 =====
+
+class CustomException extends Exception {
+    public CustomException(String message) {
+        super(message); // Exceptionクラスのコンストラクタに渡す
+    }
+}
+
+public class ExceptionSample {
+
+    // throwsで呼び出し元に例外を投げるメソッド
+    public static void riskyMethod(int number) throws CustomException {
+        if (number < 0) {
+            throw new CustomException("マイナスの数は使えません: " + number);
+        } else {
+            System.out.println("安全な数値です: " + number);
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            System.out.println("例外処理の開始");
+            riskyMethod(-5); // ここで例外が投げられる
+        } catch (CustomException e) {
+            // throwされた例外をcatchして処理する
+            System.out.println("エラー発生: " + e.getMessage());
+        } finally {
+            // 最後に必ず実行される処理
+            System.out.println("例外処理終了");
+        }
+    }
+}
